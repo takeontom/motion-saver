@@ -1,0 +1,2 @@
+class MotionSaver(object):
+    pass
