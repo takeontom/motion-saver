@@ -15,8 +15,8 @@ setup(
     author='Tom Smith',
     author_email='tom@takeontom.com',
     url='https://github.com/takeontom/motion-saver',
-    packages=['motion-saver'],
-    install_requires=(),
+    packages=['motionsaver'],
+    install_requires=('pillow>=4', ),
     license='MIT license',
     classifiers=(
         'Development Status :: 2 - Pre-Alpha',

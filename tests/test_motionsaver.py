@@ -1,6 +1,6 @@
+import os
 from collections import deque
 from datetime import datetime, timedelta
-import os
 
 from PIL import Image
 
