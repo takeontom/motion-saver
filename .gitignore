@@ -102,3 +102,5 @@ ENV/
 .testmondata
 .tmontmp
 .testmondata-journal
+play
+play.py

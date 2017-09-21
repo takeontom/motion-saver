@@ -11,15 +11,17 @@ class MotionSaver(object):
         self.save_previous_seconds = 5
         self.save_post_seconds = 5
         self.last_motion = None
+        self.last_motion_level = 0
+        self.commit = True
 
     def add_image(self, image, datetime_taken, save_path):
         """Add an image to the MotionSaver for the magic to happen."""
 
         self.push_recent_image(image, datetime_taken, save_path)
 
-        motion_level = self.get_motion_level(self.recent_images)
+        self.last_motion_level = self.get_motion_level(self.recent_images)
 
-        if motion_level >= self.motion_threshold:
+        if self.last_motion_level >= self.motion_threshold:
             self.last_motion = datetime_taken
 
         if not self.last_motion:
@@ -27,16 +29,8 @@ class MotionSaver(object):
             return
 
         last_motion_seconds = (datetime_taken - self.last_motion).seconds
-        if last_motion_seconds <= self.save_post_seconds:
+        if last_motion_seconds <= self.save_post_seconds and self.commit:
             self.save_images(self.recent_images)
-
-        # * add to stack
-        # * detect motion
-        # * save entire stack, but keep the stack populated for future motion
-        #   detection
-        # * set motioned detected flag
-        # * keep saving images until time expired
-        # * unset flag
 
     def save_images(self, image_dicts):
         for image_dict in image_dicts:

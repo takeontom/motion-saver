@@ -7,6 +7,10 @@ from PIL import Image
 from motionsaver import MotionSaver
 
 
+class TestIntegrationMotionSaver(object):
+    pass
+
+
 class TestMotionSaver(object):
     def test__init__(self):
         ms = MotionSaver()
