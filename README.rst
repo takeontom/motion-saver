@@ -3,8 +3,20 @@ motion-saver
 
 Easily pick out and save images which contain motion from a stream of images.
 
+
 Features
 --------
+
+* Send images into the MotionSaver, and it'll save the ones with motion.
+* Optionally save images from before and after motion occurs.
+* Easy to configure and use.
+
+
+Requirements
+------------
+
+* Python 3.5 or above
+* Pillow 4+
 
 
 Installation
@@ -35,9 +47,10 @@ detected it will save the previous 30 seconds of images, and keep saving until
 
     from motionsaver import MotionSaver
 
-    ms = MotionSaver(
-        sensitivity=0.5, keep_prev_seconds=30, keep_next_seconds=20
-    )
+    ms = MotionSaver()
+    ms.motion_threshold = 0.1
+    ms.save_previous_seconds = 30
+    ms.save_post_seconds = 20
 
     while True:
         now = datetime.now()
